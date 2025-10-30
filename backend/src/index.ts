@@ -22,6 +22,12 @@ app.use(
   }),
 );
 
+dbClient.connect().then(() => {
+  console.log("Connected to MongoDB");
+}).catch((err) => {
+  console.error("Failed to connect to MongoDB", err);
+});
+
 app.use(router.routes()).use(router.allowedMethods());
 app.use(serverRoute.routes()).use(serverRoute.allowedMethods());
 app.use(examsRoute.routes()).use(examsRoute.allowedMethods());
